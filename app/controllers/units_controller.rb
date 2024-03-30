@@ -2,7 +2,6 @@ class UnitsController < ApplicationController
     before_action :set_unit, only: [:show, :edit, :update, :destroy]
     # authorize_resource
 
-
     def index
         @active_units = Unit.where(active: true)
         @inactive_units = Unit.where(active: false)
@@ -28,7 +27,6 @@ class UnitsController < ApplicationController
     end
     
     def edit
-        @unit = Unit.find(params[:id])
     end
     
     def update

@@ -28,15 +28,27 @@ Rails.application.routes.draw do
 
   # Routes for regular HTML views go here...
     # Semi-static page routes
+    get 'home', to: 'home#index', as: :home
 
     
 
     # Authentication routes
+    get 'login', to: 'sessions#new', as: :login
+    get 'logout', to: 'sessions#destroy', as: :logout
 
     
 
     # Resource routes (maps HTTP verbs to controller actions automatically):
     resources :units
+    resources :officers
+    resources :crimes
+    resources :criminals
+    resources :investigations do
+      member do
+        patch 'close'
+      end
+    end
+    resources :sessions
 
   
   
