@@ -1,5 +1,7 @@
 class UnitsController < ApplicationController
     before_action :set_unit, only: [:show, :edit, :update, :destroy]
+    before_action :check_login
+    authorize_resource
     # authorize_resource
 
     def index

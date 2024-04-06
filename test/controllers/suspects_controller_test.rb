@@ -36,8 +36,6 @@ class SuspectsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to investigation_path(@suspect.investigation)
   end
 
-
-
   test "should not have generic routes (i.e., not using resources :suspects)" do
     @suspect = FactoryBot.create(:suspect, criminal: @criminal, investigation: @investigation, added_on: Date.current)  
     assert_raise ActionController::UrlGenerationError do get url_for(controller: "suspects", action: "index") end

@@ -1,5 +1,7 @@
 class InvestigationsController < ApplicationController
     before_action :set_investigation, only: [:show, :edit, :update, :close]
+    before_action :check_login
+    authorize_resource
 
     def index
         @open_investigations = Investigation.is_open
@@ -23,7 +25,7 @@ class InvestigationsController < ApplicationController
             flash[:notice] = "Successfully added '#{investigation_params[:title]}' to GCPD."
             redirect_to investigation_path(@investigation)
         else
-            render :new
+            render action: 'new'
         end
     end
 
@@ -34,17 +36,15 @@ class InvestigationsController < ApplicationController
         if @investigation.update(investigation_params)
             redirect_to investigation_path(@investigation)
         else
-            render :edit
+            render action: 'edit'
         end
     end
 
     def close
         if @investigation.update(date_closed: Date.current, solved: true) 
             flash[:notice] = "Investigation has been closed."
-            redirect_to investigations_path
-        else
-            redirect_to investigation_path
         end
+        redirect_to investigations_path
     end
 
     private
