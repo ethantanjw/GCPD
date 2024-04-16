@@ -4,8 +4,8 @@ class OfficersController < ApplicationController
     authorize_resource
 
     def index
-        @active_officers = Officer.where(active: true)
-        @inactive_officers = Officer.where(active: false)
+        @active_officers = Officer.where(active: true).paginate(page: params[:page]).per_page(10)
+        @inactive_officers = Officer.where(active: false).paginate(page: params[:page]).per_page(10)
     end
     
     def show
@@ -13,7 +13,7 @@ class OfficersController < ApplicationController
         @past_assignments = @officer.assignments.where('end_date <= ?', Date.today)
     end
     
-    def new
+    def newﬁ
         @officer = Officer.new
     end
     
