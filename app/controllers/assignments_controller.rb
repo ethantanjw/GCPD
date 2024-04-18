@@ -33,7 +33,7 @@ class AssignmentsController < ApplicationController
     end
 
     def assignment_params
-        params.require(:assignment).permit(:officer_id, :investigation_id, :start_date, :end_date)
+        params.require(:assignment).permit(:officer_id, :investigation_id)
     end
 
 end
