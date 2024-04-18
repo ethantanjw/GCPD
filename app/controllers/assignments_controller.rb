@@ -4,12 +4,14 @@ class AssignmentsController < ApplicationController
     authorize_resource
 
     def new
+        @assignment = Assignment.new
         @officer = Officer.find(params[:officer_id])
         @officer_investigations = Investigation.all - @officer.investigations
     end
 
     def create
         @assignment = Assignment.new(assignment_params)
+        @assignment.start_date = Date.current
         if @assignment.save
             flash[:notice] = "Successfully added assignment."
             redirect_to officer_path(@assignment.officer)
@@ -31,7 +33,7 @@ class AssignmentsController < ApplicationController
     end
 
     def assignment_params
-        params.require(:assignment).permit(:officer_id, :investigation_id, :start_date, :end_date)
+        params.require(:assignment).permit(:officer_id, :investigation_id)
     end
 
 end
