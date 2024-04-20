@@ -1,3 +1,16 @@
-<footer>
-  <p>Webmaster: YOUR NAME HERE</p>
-</footer>
+<div class="row">  
+  <% unless logged_in? %>
+    <%= link_to 'Login', login_path, class: 'btn btn-primary' %>
+  <% end %>
+  <h4>Welcome to GCPD</h4>  
+  <div class="col s9">
+    <div class="card yellow lighten-5">
+      <div class="card-content">
+        <p>The Gotham City Police Department (GCPD) is a dedicated group of law enforcement professionals committed to maintaining law and order in Gotham City. 
+          We work tirelessly to protect the citizens and uphold justice. We are always ready to serve and protect. Welcome to our website.</p>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

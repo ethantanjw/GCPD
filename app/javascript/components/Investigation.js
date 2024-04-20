@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 import { get } from "../api";
 import InvestigationOverview from "./InvestigationOverview";
 import Crimes from "./Crimes";
+import Assignment from "./Assignment";
+import InvestigationNotes from "./InvestigationNotes";
+import Suspects from "./Suspects";
 
 function Investigation({ investigationId }) {
   const [investigation, setInvestigation] = React.useState();
@@ -41,8 +44,27 @@ function Investigation({ investigationId }) {
         </div>  
       </div>
 
-      
-      
+      <div class="row">
+        <div class="col s6">
+          <Assignment investigation={investigation}/>
+        </div>
+
+        <div class="col s6">
+          <InvestigationNotes
+            notes={investigationData.notes}
+            investigationId={investigationId}
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s6">
+          <Suspects
+            suspects={investigationData.suspects}
+            investigationId={investigationId}
+          />
+        </div>      
+      </div>
     </>
   );
 }

@@ -1,14 +1,23 @@
-<h1>Active Officers in GCPD</h1>
+<h3>Active Officers in GCPD</h3>
 <table class="striped highlight">
   <thead>
     <th>Name</th>
     <th>Rank</th>
+    <th>Unit</th>
     <th class="align_center">Options</th>
   </thead>
     <% for officer in @active_officers %>
     <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
       <td><%= link_to officer.name, officer_path(officer) %></td>
       <td><%= officer.rank %></td>
+      <td> <%= officer.unit.name %></td>
+      <td class="align_center">
+        <%= link_to edit_officer_path(officer) do %>
+          <i class="material-icons">edit</i>
+        <% end %>
+        <%= link_to officer_path(officer), method: :delete, data: { confirm: 'Are you sure you want to delete this information?' } do %>
+          <i class="material-icons">delete</i>
+        <% end %>
     </tr>   
   <% end %>
 </table>

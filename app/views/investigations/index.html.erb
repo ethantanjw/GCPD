@@ -1,16 +1,22 @@
 <%if @open_investigations.empty?%>
-    <h4>No open cases at this time</h4>
+    <h3>No open cases at this time</h3>
 <%else%>
-    <h4>Open Investigations in GCPD</h4>
+    <h3>Open Investigations in GCPD</h3>
     <table class="striped highlight">
     <thead>
         <th>Title</th>
-        <th>Date open</th>
+        <th> Crime Location</th>
+        <th>Date opened</th>
+        <th> Batman Involved? </th>
+        <th> Number of Officers Assigned </th>
     </thead>
     <%for i in @open_investigations%>
         <tr>
-            <td><%= i.title %></td>
+            <td><%= link_to i.title, investigation_path(i) %></td>
+            <td><%= i.crime_location %></td>
             <td><%= i.date_opened.strftime("%m/%d/%y")%></td>
+            <td><%= i.batman_involved ? "Yes" : "No" %></td>
+            <td><%= i.officers.count %></td>
         </tr>
     <% end %>
     </table>
