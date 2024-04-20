@@ -68,7 +68,7 @@ function Suspects({ suspects, investigationId }) {
         put(`/v1/drop_suspect/${criminalId}`).then((result) => {
             const index = currentSuspects.findIndex(suspect => suspect.data.id === criminalId);
             const updated = currentSuspects.map((suspect, suspect_index) => {
-                if (index === suspect_index) {
+                if (suspect_index === index ) {
                     return result;
                 }
                 else {
