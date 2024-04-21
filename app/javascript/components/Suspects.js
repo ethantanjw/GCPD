@@ -115,7 +115,7 @@ function Suspects({ suspects, investigationId }) {
 
     return (
         <>
-            <div className="card yellow lighten-5">
+            <div className="card light-blue lighten-5">
                 <div className="card-content">
                     <span className="card-title">Suspects</span>
                     {content}

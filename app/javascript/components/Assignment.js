@@ -23,7 +23,7 @@ function Assignment ({investigation}) {
      
     return (
         <>
-            <div class="card yellow lighten-5">
+            <div class="card light-blue lighten-5">
                 <div class="card-content">
                     <span class="card-title">Current Assignments</span>
                     {assignments.length === 0 ? (

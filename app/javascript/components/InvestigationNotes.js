@@ -13,14 +13,15 @@ function InvestigationNotesEditor({ close, onSave, currentNotes }) {
         setNoteContent(event.target.value);
     };
     return (
-        <div>
-            <textarea
-                value={noteContent}
-                onChange={handleChange}
-            />
-            <button onClick={() => onSave(noteContent)}>Save</button>
-            <button onClick={close}>Cancel</button>
-        </div>
+      <div>
+        <textarea
+          value={noteContent}
+          onChange={handleChange}
+          style={{ color: 'black', backgroundColor: 'white' }}
+        />
+        <button onClick={() => onSave(noteContent)}>Save</button>
+        <button onClick={close}>Cancel</button>
+      </div>
     );
 }
 
@@ -72,7 +73,7 @@ function InvestigationNotes({ notes, investigationId }) {
 
   return (
     <>
-      <div class="card yellow lighten-5">
+      <div class="card light-blue lighten-5">
         <div class="card-content">
           <span class="card-title">Investigation Notes</span>
             {content}
