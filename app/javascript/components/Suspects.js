@@ -16,7 +16,7 @@ function SuspectEditor({close, onSave, currentSuspects}) {
                 const criminalAlreadyExists = 
                     !!find(currentSuspects, 
                     {
-                        data: { attributes: {criminal: {id: criminal.data.id}} },
+                        data: { attributes: {criminal: { data: {id: criminal.data.id}}}},
                     });
                 return {
                     value: criminal.data.id,
